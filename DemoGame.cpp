@@ -10,12 +10,14 @@
 #include "DemoGame.hpp"
 #include "FootSoldier.hpp"
 #include "FootCommander.hpp"
+#include "Sniper.hpp"
 
 #include <cassert>
 
 namespace WarGame {
 
 		DemoGame::DemoGame(): board (8, 8) {
+			
 			// Add soldiers for player 1:
 			assert(!board.has_soldiers(1));
 			board[{0,1}] = new FootSoldier(1);
