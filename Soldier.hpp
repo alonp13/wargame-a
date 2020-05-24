@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include "Board.hpp"
 
 
 typedef enum Type {
@@ -20,13 +19,14 @@ class Soldier
         uint m_player_number;
         uint m_hp;
         uint m_damage;
-        std::pair<int,int> m_location;
+        //std::pair<int,int> m_location;
 
     public:
         Soldier() {};
-        virtual void action(std::vector<std::vector<Soldier*>> &board);
-        void setLocation(std::pair<int,int> location) { m_location = location; }
+        virtual void action(std::vector<std::vector<Soldier*>> &board) = 0;
+        virtual uint getMaxHP() = 0;
+
+       // void setLocation(std::pair<int,int> &location) { m_location = location; }
         Type getType() { return m_type; } 
-        virtual uint getMaxHP();
 
 };
