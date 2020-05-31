@@ -18,3 +18,8 @@ void Sniper::action(std::vector<std::vector<Soldier*>> &board)
 {
     return;
 }
+
+void Sniper::print()
+{
+    printf("{(%d) Sniper,hp: %d}",m_player_number,m_hp);
+}

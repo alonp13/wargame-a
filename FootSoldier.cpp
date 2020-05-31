@@ -15,7 +15,12 @@ uint FootSoldier::getMaxHP()
 
 void FootSoldier::action(std::vector<std::vector<Soldier*>> &board)
 {
-    
+    std::cout<<"FootSoldier action"<<std::endl;
     return;
+}
+
+void FootSoldier::print()
+{
+    printf("{(%d) FootSoldier,hp: %d}",m_player_number,m_hp);
 }
 

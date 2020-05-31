@@ -9,4 +9,5 @@ class SniperCommander : public Sniper
         SniperCommander(uint player_number);
         void action(std::vector<std::vector<Soldier*>> &board);
         uint getMaxHP();
+        void print();
 };

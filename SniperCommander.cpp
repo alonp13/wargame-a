@@ -17,3 +17,8 @@ void SniperCommander::action(std::vector<std::vector<Soldier*>> &board)
 {
     return;
 }
+
+void SniperCommander::print()
+{
+    printf("{(%d) SniperCommander,hp: %d}",m_player_number,m_hp);
+}

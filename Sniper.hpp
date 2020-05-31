@@ -10,5 +10,6 @@ class Sniper : public Soldier
         Sniper(uint player_number);
         virtual void action(std::vector<std::vector<Soldier*>> &board);
         virtual uint getMaxHP();
+        virtual void print();
 
 };

@@ -18,6 +18,7 @@ namespace WarGame {
 
 		DemoGame::DemoGame(): board (8, 8) {
 			
+
 			// Add soldiers for player 1:
 			assert(!board.has_soldiers(1));
 			board[{0,1}] = new FootSoldier(1);
@@ -31,7 +32,7 @@ namespace WarGame {
 			board[{7,3}] = new FootCommander(2);
 			board[{7,5}] = new FootSoldier(2);
 			assert(board.has_soldiers(2));
-
+			board.print();
 			// In your game, you can put more soldier types, such as the sniper and the paramedic types.
 		}
 
@@ -48,6 +49,9 @@ namespace WarGame {
 			board.move(2, {7,3}, Board::MoveDIR::Left);    // FootCommander of player 2 moves left, and all soldiers of player 2 attack.
 			if (!board.has_soldiers(1)) return 2;
 
+			board.move(2, {2,1}, Board::MoveDIR::Left);    // FootCommander of player 2 moves left, and all soldiers of player 2 attack.
+			if (!board.has_soldiers(1)) return 2;
+			board.print();
 			/// Write more moves here..
 
 			// If no player won, return "tie":

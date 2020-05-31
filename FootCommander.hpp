@@ -9,4 +9,6 @@ class FootCommander : public FootSoldier
         FootCommander(uint player_number);
         void action(std::vector<std::vector<Soldier*>> &board);
         uint getMaxHP();
+
+        void print();
 };

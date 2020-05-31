@@ -13,7 +13,47 @@ Soldier* Board::operator[](std::pair<int,int> location) const
 
 void Board::move(uint player_number, std::pair<int,int> source, MoveDIR direction)
 {
-    return;
+    Soldier* soldier_chose = board[source.first][source.second];
+    if(soldier_chose == nullptr)
+    {
+        throw std::invalid_argument("There is no Soldier on source location!");
+    }
+
+    if(soldier_chose->getPlayerNumber() != player_number)
+    {
+        throw std::invalid_argument("This is not your Soldier!");
+    }
+
+    std::pair<int,int> target = source;
+    switch (direction)
+    {
+    case MoveDIR::Up:
+        target.first = source.first+1;
+        break;
+    case MoveDIR::Down:
+        target.first = source.first-1;
+        break;
+    case MoveDIR::Left:
+        target.second = source.second-1;
+        break;
+    case MoveDIR::Right:
+        target.second = source.second+1;
+        break;
+
+    default:
+        break;
+    }
+
+    if(board[target.first][target.second] != nullptr)
+    {
+        throw std::invalid_argument("There is already a Soldier in target location!");
+    }
+
+    board[target.first][target.second] = soldier_chose;
+    board[source.first][source.second] = nullptr;
+
+    soldier_chose->action(board);
+
 }
 
 bool Board::has_soldiers(uint player_number) const
@@ -32,4 +72,23 @@ bool Board::has_soldiers(uint player_number) const
         }
     }
     return false;
+}
+
+void Board::print()
+{
+    for(int i = 0; i<board.size(); i++)
+    {
+        for(int j = 0 ; j < board[i].size() ; j++)
+        {
+            printf("[(%d,%d)",i,j);
+            if(board[i][j] != nullptr)
+            {
+                board[i][j]->print();
+            } else {
+                printf("EMPTY SPOT");
+            }
+            printf("]");
+        }
+        printf("\n");
+    } 
 }

@@ -27,6 +27,8 @@ class Soldier
 
         virtual void action(std::vector<std::vector<Soldier*>> &board) = 0;
         virtual uint getMaxHP() = 0;
+        virtual void print() = 0;
+
 
        // void setLocation(std::pair<int,int> &location) { m_location = location; }
         Type getType() { return m_type; } 

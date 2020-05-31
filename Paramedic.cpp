@@ -18,3 +18,8 @@ void Paramedic::action(std::vector<std::vector<Soldier*>> &board)
     
     return;
 }
+
+void Paramedic::print()
+{
+    printf("{(%d) Paramedic,hp: %d}",m_player_number,m_hp);
+}
