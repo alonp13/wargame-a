@@ -47,13 +47,14 @@ void Sniper::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,int
 
     if(strongest_enemy != nullptr)
     {
-        uint new_hp = strongest_enemy->getHP() - m_damage;
+        int new_hp = strongest_enemy->getHP() - m_damage;
         strongest_enemy->setHP(new_hp);
         if(new_hp <= 0)
         {
             board[strongest_enemy_location.first][strongest_enemy_location.second] = nullptr;
         }
-    }}
+    }
+}
 
 void Sniper::print()
 {

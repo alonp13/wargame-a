@@ -15,8 +15,59 @@ uint FootCommander::getMaxHP()
 
 void FootCommander::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
 {
-    std::cout<<"FootCommander action"<<std::endl;
-    return;
+    int x1 = location.first;
+    int x2 = location.second;
+
+    Soldier* closest_enemy = nullptr;
+    std::pair<int,int> closest_enemy_location;
+    double min_dist = board.size()*board.size();
+
+    std::vector<Soldier*> teammates;
+    std::vector<std::pair<int,int>> teammates_locations;
+
+    for(int i = 0 ; i < board.size() ; i ++)
+    {
+        for(int j = 0 ; j < board[i].size(); j++)
+        {
+            Soldier * curr = board[i][j];
+            if(curr != nullptr)
+            {
+                if(curr->getPlayerNumber() != m_player_number)
+                {
+                    double dist = Utils::distance(x1,x2,i,j);
+                    if(dist < min_dist)
+                    {
+                        min_dist = dist;
+                        closest_enemy = curr;
+                        closest_enemy_location = {i,j};
+                    }
+                } else {
+                    if(curr->getType() == Type::FootSoldierType)
+                    {
+                        teammates.push_back(curr);
+                        teammates_locations.push_back({i,j});
+                    }
+                }
+            }
+        }
+    }
+
+    if(closest_enemy != nullptr)
+    {
+        int new_hp = closest_enemy->getHP() - m_damage;
+        closest_enemy->setHP(new_hp);
+        if(new_hp <= 0)
+        {
+            board[closest_enemy_location.first][closest_enemy_location.second] = nullptr;
+        }
+    }
+
+    for(int i = 0 ; i < teammates.size() ; i++)
+    {
+        Soldier* curr_teammate = teammates[i];
+        std::pair<int,int> curr_location = teammates_locations[i];
+        curr_teammate->action(board,curr_location);
+    }
 }
 
 void FootCommander::print()

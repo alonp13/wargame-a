@@ -18,6 +18,11 @@ Soldier* Board::operator[](std::pair<int,int> location) const
 
 void Board::move(uint player_number, std::pair<int,int> source, MoveDIR direction)
 {
+    if(source.first < 0 || source.second < 0 || source.first >= board.size() || source.second >= board[source.first].size())
+    {
+        throw std::invalid_argument("Invalid source location!");
+    }
+
     Soldier* soldier_chose = board[source.first][source.second];
     if(soldier_chose == nullptr)
     {
@@ -47,6 +52,11 @@ void Board::move(uint player_number, std::pair<int,int> source, MoveDIR directio
 
     default:
         break;
+    }
+
+    if(target.first < 0 || target.second < 0 || target.first >= board.size() || target.second >= board[target.first].size())
+    {
+        throw std::invalid_argument("Invalid Move!");
     }
 
     if(board[target.first][target.second] != nullptr)

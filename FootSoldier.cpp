@@ -45,7 +45,7 @@ void FootSoldier::action(std::vector<std::vector<Soldier*>> &board, std::pair<in
 
     if(closest_enemy != nullptr)
     {
-        uint new_hp = closest_enemy->getHP() - m_damage;
+        int new_hp = closest_enemy->getHP() - m_damage;
         closest_enemy->setHP(new_hp);
         if(new_hp <= 0)
         {

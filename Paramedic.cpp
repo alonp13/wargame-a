@@ -17,7 +17,6 @@ void Paramedic::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,
 {
     int x = location.first;
     int y = location.second;
-    std::cout << "aaaa" << x << ","<<y << std::endl;
 
     for(int i = x - 1; i <= x+1 && i <board.size(); i++)
     {
@@ -28,7 +27,6 @@ void Paramedic::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,
         {
             if(j < 0) continue;
             if(i == location.first && j == location.second) continue;
-            std::cout << "(" << i << "," << j << ")" <<std::endl;
             Soldier* curr = board[i][j];
             if(curr != nullptr)
             {
