@@ -13,10 +13,33 @@ uint Paramedic::getMaxHP()
     return MAX_HP;
 }
 
-void Paramedic::action(std::vector<std::vector<Soldier*>> &board)
+void Paramedic::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
 {
-    
-    return;
+    int x = location.first;
+    int y = location.second;
+    std::cout << "aaaa" << x << ","<<y << std::endl;
+
+    for(int i = x - 1; i <= x+1 && i <board.size(); i++)
+    {
+
+        if(i < 0) continue;
+        int size = board[i].size();
+        for(int j = (y - 1); j < size && j <= (y+1); j++)
+        {
+            if(j < 0) continue;
+            if(i == location.first && j == location.second) continue;
+            std::cout << "(" << i << "," << j << ")" <<std::endl;
+            Soldier* curr = board[i][j];
+            if(curr != nullptr)
+            {
+                if(curr->getPlayerNumber() == m_player_number)
+                {
+                    curr->setHP(curr->getMaxHP());
+                }
+            }
+        }
+    }
+
 }
 
 void Paramedic::print()

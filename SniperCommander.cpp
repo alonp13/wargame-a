@@ -13,7 +13,7 @@ uint SniperCommander::getMaxHP()
     return MAX_HP;
 }
 
-void SniperCommander::action(std::vector<std::vector<Soldier*>> &board)
+void SniperCommander::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
 {
     return;
 }

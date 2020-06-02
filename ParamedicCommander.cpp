@@ -13,7 +13,7 @@ uint ParamedicCommander::getMaxHP()
     return MAX_HP;
 }
 
-void ParamedicCommander::action(std::vector<std::vector<Soldier*>> &board)
+void ParamedicCommander::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
 {
     return;
 }

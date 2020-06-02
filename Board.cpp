@@ -1,6 +1,11 @@
 #include "Board.hpp"
 using namespace WarGame;
 
+double Utils::distance(double x1,double y1,double x2,double y2)
+{
+    return sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+}
+
 Soldier*& Board::operator[](std::pair<int,int> location)
 {
     return board[location.first][location.second];   
@@ -52,7 +57,7 @@ void Board::move(uint player_number, std::pair<int,int> source, MoveDIR directio
     board[target.first][target.second] = soldier_chose;
     board[source.first][source.second] = nullptr;
 
-    soldier_chose->action(board);
+    soldier_chose->action(board,target);
 
 }
 

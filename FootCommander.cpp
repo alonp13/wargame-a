@@ -13,7 +13,7 @@ uint FootCommander::getMaxHP()
     return MAX_HP;
 }
 
-void FootCommander::action(std::vector<std::vector<Soldier*>> &board)
+void FootCommander::action(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> location)
 {
     std::cout<<"FootCommander action"<<std::endl;
     return;
